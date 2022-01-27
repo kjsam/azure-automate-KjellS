@@ -3,5 +3,5 @@ param (
     [String]
     $Navn
 )
-
-Write-Host "Hei og hopp $Navn"
+Clear-Host
+Write-Host -ForegroundColor Cyan "Hei og hopp $Navn"
