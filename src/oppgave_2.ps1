@@ -4,4 +4,4 @@ param (
     $Navn
 )
 Clear-Host
-Write-Host "Hei og hopp $Navn"
+Write-Host "Hei og hopp din sopp! $Navn"
