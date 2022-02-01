@@ -25,7 +25,7 @@ try {
     $response = Invoke-WebRequest -Uri $UrlKortstokk
 }
 catch {
-    Write-Warning "Kunne ikke hente kortstokk fra URL $($UrlKortstokk): Exception.Message"
+    Write-Warning "Kunne ikke hente kortstokk fra URL: $UrlKortstokk"
     Exit 1
 }
 
