@@ -17,3 +17,4 @@ foreach ($card in $cards) {
 }
 
 Write-Host "Kortstokk: $kortstokk"
+
