@@ -11,11 +11,30 @@ function KortstokkPrint {
         [Object[]]
         $cards
     )
-    $kortstokk = @()
+    $kortstokk = ""
     foreach ($card in $cards) {
-        $kortstokk += $card.suit[0] + $card.value
+        $kortstokk += $card.suit[0] + $card.value + ","
     }
-    $kortstokk
+    $kortstokk.Substring(0,$kortstokk.Length-1)
+}
+
+function PoengsumKortstokk {
+    [OutputType([int])]
+    param (
+        [object[]]
+        $cards
+    )
+    $sum = 0
+    foreach ($card in $cards) {
+        $sum += switch ($card.value){
+            'J' {10}
+            'Q' {10}
+            'K' {10}
+            'A' {11}
+            Default {$card.value}
+        }
+    }
+    $sum
 }
 
 Clear-Host
@@ -31,26 +50,14 @@ catch {
 
 $cards = $response.Content | ConvertFrom-Json
 
-$sum = 0
-foreach ($card in $cards) {
-    $sum += switch ($card.value){
-        'J' {10}
-        'Q' {10}
-        'K' {10}
-        'A' {11}
-        Default {$card.value}
-    }
-}
-
-# Skriver ut kortstokk
 Write-Host "Kortstokk: $(KortstokkPrint($cards))"
-Write-Host "Poengsum: $sum"
+Write-Host "Poengsum: $(PoengsumKortstokk $cards)"
 
 $meg = $cards[0..1]
-$magnus = $cards[2..3]
-$cards = $cards[4..$cards.Length]
+$cards = $cards[2..$cards.Length]
+$magnus = $cards[0..1]
+$cards = $cards[2..$cards.Length]
 
 Write-Host "Meg: $(KortstokkPrint($meg))"
 Write-Host "Magnus: $(KortstokkPrint($magnus))"
 Write-Host "Kortstokk: $(KortstokkPrint($cards))"
-
