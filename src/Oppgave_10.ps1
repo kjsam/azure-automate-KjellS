@@ -53,7 +53,8 @@ function skrivUtResultat {
         [object[]]
         $kortStokkMeg        
     )
-    Write-Host -ForegroundColor Cyan "Vinner: $vinner"
+    Write-Host "Vinner: $vinner"
+    # Write-Host -ForegroundColor Cyan "Vinner: $vinner"
     Write-Host "Magnus | $(PoengsumKortstokk -kortstokk $kortStokkMagnus) | $(KortstokkPrint -kortstokk $kortStokkMagnus)"    
     Write-Host "Meg    | $(PoengsumKortstokk -kortstokk $kortStokkMeg) | $(KortstokkPrint -kortstokk $kortStokkMeg)"
 }
