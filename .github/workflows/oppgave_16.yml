@@ -24,4 +24,5 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS}}
           enable-AzPSSession: true
 
-          
+
+ 
